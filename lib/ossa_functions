@@ -128,7 +128,7 @@ elif [[ ${EOL_DAYS_REMAINING} -lt 365 ]];then EOL_DAYS_REMAINING=$(printf "\e[38
 elif [[ ${EOL_DAYS_REMAINING} -gt 365 ]];then EOL_DAYS_REMAINING=$(printf "\e[38;2;0;235;0m${EOL_DAYS_REMAINING} days\e[0m ($(date -d "$(date +${EOL_END})" '+%d/%b/%Y'))");fi
 [[ ${EL} = 0 ]] && EOL_DAYS_REMAINING=$(printf "\e[38;2;160;160;160;3mN/A\e[0m")
 echo "Ubuntu ${RELEASE^}|${CN1^} ${CN2^}|${FLAG^}|${EOS_DAYS_REMAINING}|${EOL_DAYS_REMAINING}"
-done))|column -nexts"|"|sed 's/^Release.*$/'$(printf "\e[1m&\e[0m")'/g'|/bin/grep -E "Release|${OSSA_CODENAME^}"|tee ${OSSA_WORKDIR}/release-info-ansi|sed 's/\x1b\[[0-9;]*[a-zA-Z]//g'|tee 1>/dev/null ${OSSA_WORKDIR}/release-info
+done))|column -tnexs"|"|sed 's/^Release.*$/'$(printf "\e[1m&\e[0m")'/g'|/bin/grep -E "Release|${OSSA_CODENAME^}"|tee ${OSSA_WORKDIR}/release-info-ansi|sed 's/\x1b\[[0-9;]*[a-zA-Z]//g'|tee 1>/dev/null ${OSSA_WORKDIR}/release-info
 };export -f show-release-info
 
 make-origin-table() {
