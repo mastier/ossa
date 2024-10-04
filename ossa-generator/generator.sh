@@ -224,7 +224,7 @@ fi
 
 # Test for presence of  OVAL data for Ubuntu release that is being assessed 
 [[ ${VERBOSE} = true ]] && { printf "\e[2G - Checking the availability of OVAL Data for Ubuntu ${OSSA_CODENAME}\n"; }
-export OVAL_URI="https://people.canonical.com/~ubuntu-security/oval/oci.com.ubuntu.${OSSA_CODENAME}.cve.oval.xml.bz2"
+export OVAL_URI="https://security-metadata.canonical.com/oval/oci.com.ubuntu.${OSSA_CODENAME}.cve.oval.xml.bz2"
 [[ ${VERBOSE} = true ]] && { printf "\e[2G - OVAL URL: ${OVAL_URI}\n"; }
 export TEST_OVAL=$(curl -slSL --connect-timeout 10 --max-time 30 --retry 2 --retry-delay 2 -w %{http_code} -o /dev/null ${OVAL_URI} 2>&1)
 [[ ${OSSA_DEBUG} = true ]] && { echo "URL Test Results: ${TEST_OVAL}"; }
